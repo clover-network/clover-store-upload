@@ -341,11 +341,7 @@
             }
         }
 
-        const IPFS = IpfsHttpClient({
-            host: "18.138.102.196",
-            port: "5002",
-            protocol: "http",
-        });
+        const IPFS = IpfsHttpClient("https://ipfs.clover.finance");
 
         async function getSource(hash, type) {            //获取ipfs上的资源
             let arr = [];
