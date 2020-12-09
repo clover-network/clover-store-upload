@@ -96,6 +96,19 @@
             box-shadow: 0px 4px 0px 0px #000000;
         }
 
+        .process {
+            display: none;
+            margin-left: 450px;
+            margin-top: -30px;
+            color: #142E48;
+            font-family: Roboto;
+            font-weight: bold;
+            font-size: 10px;
+            line-height: normal;
+            letter-spacing: 0px;
+            text-align: center;
+        }
+
         .filePath {
             color: #142E48;
             font-family: PingFang HK;
@@ -244,7 +257,8 @@
 
         <div>
             <button type="button" onClick="captureFile()" class="submitBtn">Submit</button>
-            <button type="button" onClick="QueryBtnEvent()" class="queryBtn">Query</button>
+            <!-- <button type="button" onClick="QueryBtnEvent()" class="queryBtn">Query</button> -->
+            <span class="process">0%</span>
         </div>
         <div style="margin-left: 325px;margin-top: 25px;">
             <label id="resault" class="filePath" style="font-weight: bold;"></label>
@@ -312,10 +326,10 @@
         var address = '0x68537B8873b9068e001fd1757Ef4FDADB08f978A';
         var abi = '[{"inputs":[{"internalType":"string","name":"_name","type":"string"},{"internalType":"string","name":"_desc","type":"string"},{"internalType":"string","name":"_source","type":"string"},{"internalType":"string","name":"_icon","type":"string"}],"name":"addProject","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"components":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"desc","type":"string"},{"internalType":"string","name":"source","type":"string"},{"internalType":"string","name":"icon","type":"string"},{"internalType":"uint256","name":"version","type":"uint256"},{"internalType":"bytes32","name":"uuid","type":"bytes32"},{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"address","name":"owner","type":"address"},{"internalType":"enum CloverOsProject.ProjectStatus","name":"status","type":"uint8"},{"internalType":"uint256","name":"createTime","type":"uint256"},{"internalType":"uint256","name":"updateTime","type":"uint256"}],"indexed":false,"internalType":"struct CloverOsProject.Project","name":"info","type":"tuple"}],"name":"NewProject","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"controller","type":"address"},{"components":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"desc","type":"string"},{"internalType":"string","name":"source","type":"string"},{"internalType":"string","name":"icon","type":"string"},{"internalType":"uint256","name":"version","type":"uint256"},{"internalType":"bytes32","name":"uuid","type":"bytes32"},{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"address","name":"owner","type":"address"},{"internalType":"enum CloverOsProject.ProjectStatus","name":"status","type":"uint8"},{"internalType":"uint256","name":"createTime","type":"uint256"},{"internalType":"uint256","name":"updateTime","type":"uint256"}],"indexed":false,"internalType":"struct CloverOsProject.Project","name":"info","type":"tuple"}],"name":"ProjectStatusChanged","type":"event"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"string","name":"_name","type":"string"},{"internalType":"string","name":"_desc","type":"string"},{"internalType":"string","name":"_source","type":"string"},{"internalType":"string","name":"_icon","type":"string"}],"name":"updateProject","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"controller","type":"address"},{"components":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"desc","type":"string"},{"internalType":"string","name":"source","type":"string"},{"internalType":"string","name":"icon","type":"string"},{"internalType":"uint256","name":"version","type":"uint256"},{"internalType":"bytes32","name":"uuid","type":"bytes32"},{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"address","name":"owner","type":"address"},{"internalType":"enum CloverOsProject.ProjectStatus","name":"status","type":"uint8"},{"internalType":"uint256","name":"createTime","type":"uint256"},{"internalType":"uint256","name":"updateTime","type":"uint256"}],"indexed":false,"internalType":"struct CloverOsProject.Project","name":"info","type":"tuple"}],"name":"UpdateProject","type":"event"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"enum CloverOsProject.ProjectStatus","name":"_status","type":"uint8"}],"name":"updateProjectStatusByAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"enum CloverOsProject.ProjectStatus","name":"_status","type":"uint8"}],"name":"updateProjectStatusByOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"admin","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"developers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_start","type":"uint256"},{"internalType":"uint256","name":"_end","type":"uint256"}],"name":"getProjects","outputs":[{"components":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"desc","type":"string"},{"internalType":"string","name":"source","type":"string"},{"internalType":"string","name":"icon","type":"string"},{"internalType":"uint256","name":"version","type":"uint256"},{"internalType":"bytes32","name":"uuid","type":"bytes32"},{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"address","name":"owner","type":"address"},{"internalType":"enum CloverOsProject.ProjectStatus","name":"status","type":"uint8"},{"internalType":"uint256","name":"createTime","type":"uint256"},{"internalType":"uint256","name":"updateTime","type":"uint256"}],"internalType":"struct CloverOsProject.Project[]","name":"pjs","type":"tuple[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isDevelover","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"leastUpdatTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"projects","outputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"desc","type":"string"},{"internalType":"string","name":"source","type":"string"},{"internalType":"string","name":"icon","type":"string"},{"internalType":"uint256","name":"version","type":"uint256"},{"internalType":"bytes32","name":"uuid","type":"bytes32"},{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"address","name":"owner","type":"address"},{"internalType":"enum CloverOsProject.ProjectStatus","name":"status","type":"uint8"},{"internalType":"uint256","name":"createTime","type":"uint256"},{"internalType":"uint256","name":"updateTime","type":"uint256"}],"stateMutability":"view","type":"function"}]';
 
-        var appNamePath = 'sk/AppName.txt';                                     //配置项目文件路径
-        var appDescribePath = 'sk/Describe.txt';
-        var appIconPath = 'sk/icon.png';
-        var appZipPath = 'sk/app.zip';
+        var appNamePath = 'AppName.txt';                                     //配置项目文件路径
+        var appDescribePath = 'Describe.txt';
+        var appIconPath = 'icon.png';
+        var appZipPath = 'app.zip';
 
         async function login() {
             if (typeof window.ethereum === 'undefined') {
@@ -389,8 +403,10 @@
             lists = t[0];
             console.log("------applist-------", lists);
             let parent = document.getElementsByClassName("scroll")[0];
-            item1 = document.getElementsByClassName("item")[0];
-            item2 = document.getElementsByClassName("item")[1];
+            if (item1 == null) {
+                item1 = document.getElementsByClassName("item")[0];
+                item2 = document.getElementsByClassName("item")[1];
+            }
             upTitle = document.getElementsByClassName("title")[0];
             upappView = document.getElementsByClassName("container")[0];
             appListView = document.getElementsByClassName("container")[1];
@@ -399,14 +415,20 @@
             }
             let ele;
             for (var i = 0; i < lists.length; i++) {
+                if (account !== lists[i].owner.toLowerCase()) {
+                    continue;
+                }
+
                 if (lists[i].status == 0) {
                     ele = item1.cloneNode(true);
+                    setItemData(ele, lists[i])
+                    parent.appendChild(ele);
                 }
                 else {
-                    ele = item2.cloneNode(true);
+                    // ele = item2.cloneNode(true);
+                    //setItemData(ele, lists[i])
+                    // parent.appendChild(ele);
                 }
-                setItemData(ele, lists[i])
-                parent.appendChild(ele);
             }
         }
 
@@ -421,26 +443,22 @@
             if (data.status === 0) {
                 let btn1 = item.children[2].children[0].children[0];
                 btn1.addEventListener("click", () => {
-                    appListView.style.display = "none";
-                    upappView.style.display = "block";
-                    upTitle.textContent = "| Update App";
-                    document.getElementById('AppName').value = data.name;
-                    upType = "update";
-                    appid = data.id;
-                    document.getElementById('AppName').setAttribute('disabled', 'disabled');
+                    updateBtn([data.id, data.name]);
                 })
                 let btn2 = item.children[2].children[1].children[0];
                 btn2.addEventListener("click", () => {
                     ShelfApp(data.id);
                 })
-                if (account !== data.owner.toLowerCase()) {
-                    btn1.setAttribute('disabled', 'disabled');
-                    btn2.setAttribute('disabled', 'disabled');
-                } else {
-                    btn1.removeAttribute('disabled');
-                    btn2.removeAttribute('disabled');
-                }
             }
+        }
+
+        function updateBtn([id, name]) {                                           //升级
+            appListView.style.display = "none";
+            upappView.style.display = "block";
+            upTitle.textContent = "| Update App";
+            document.getElementById('AppName').value = name;
+            upType = "update";
+            appid = id;
         }
 
         async function getProjects(_start, _end) {
@@ -486,10 +504,11 @@
             let describe = document.getElementById("Describe").value;
             let icon = document.getElementById("AppIcon").files;
             let file = document.getElementById("file").files;
+            let descObj = { "describe": describe, "size": file[0].size };
             if (name != "" && describe != "" && icon.length != 0 && file.length != 0) {
                 saveToIpfs({
                     AppName: name,
-                    Describe: describe,
+                    Describe: descObj,
                     AppIcon: icon,
                     File: file
                 });
@@ -497,41 +516,46 @@
         };
 
         async function saveToIpfs(obj) {
+            let pro = document.getElementsByClassName("process")[0];
+            pro.style.display = "block";
             console.log(obj.AppName, obj.Describe, obj.AppIcon, obj.File);
             try {
-                const added = await IPFS.addAll([{
+                const added1 = await IPFS.add({
                     path: appNamePath,
                     content: obj.AppName
-                },
-                {
+                });
+                const added2 = await IPFS.add({
                     path: appDescribePath,
-                    content: obj.Describe
-                },
-                {
+                    content: obj.Describe.describe
+                });
+                const added3 = await IPFS.add({
                     path: appIconPath,
                     content: obj.AppIcon[0]
-                },
-                {
+                });
+                const added4 = await IPFS.add({
                     path: appZipPath,
                     content: obj.File[0]
-                }
-                ], { progress: (prog) => console.log(`received: ${prog}`) })
+                }, {
+
+                    progress: (prog) => {
+                        console.log(`received: ${prog}`);
+                        let p = Math.floor(100 * Number(prog) / Number(obj.Describe.size));
+                        if (p > 100) p = 100;
+                        pro.textContent = p.toString() + "%";
+                    }
+
+                });
+
+                console.log("--------added--1-----", added1);
+                console.log("--------added--2-----", added2);
+                console.log("--------added--3-----", added3);
+                console.log("--------added--4-----", added4);
+
                 let info = {};
-                for await (let item of added) {
-                    console.log(item);
-                    if (item.path === appNamePath) {
-                        info._name = obj.AppName;
-                    }
-                    else if (item.path === appDescribePath) {
-                        info._desc = item.cid.string;
-                    }
-                    else if (item.path === appIconPath) {
-                        info._icon = item.cid.string;
-                    }
-                    else if (item.path === appZipPath) {
-                        info._source = item.cid.string;
-                    }
-                }
+                info._name = obj.AppName;
+                info._desc = added2.cid.string;
+                info._icon = added3.cid.string;
+                info._source = added4.cid.string;
                 addProject([info._name, info._desc, info._source, info._icon]);
                 init();
                 result("SUCCEED");
@@ -548,6 +572,8 @@
             document.getElementById('Describe').value = "";
             document.getElementById('iconPath').innerHTML = "";
             document.getElementById('filePath').innerHTML = "";
+            let pro = document.getElementsByClassName("process")[0];
+            pro.style.display = "none";
         }
 
         function result(msg) {                                         //显示存储结果
@@ -565,7 +591,6 @@
             appid = "";
             init();
             document.getElementById('AppName').value = "";
-            document.getElementById('AppName').removeAttribute('disabled');
         }
 
         function add() {                                                //进入upAPP页面
