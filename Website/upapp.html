@@ -253,9 +253,8 @@
             <input type='file' id="file" style="margin-left: 24px;visibility: hidden;position: absolute;"
                 onchange="changePath(2)" />
             <button class="inputbtn" style="margin-left: 33px;" onClick="select(2)">select file</button>
-            <label id="filePath" class="filePath"></label>
+            <span id="filePath" class="filePath">(Zip size &lt 100M)</span>
         </div>
-
         <div>
             <button type="button" onClick="captureFile()" class="submitBtn">Submit</button>
             <span class="process">0%</span>
@@ -420,7 +419,7 @@
         }
 
         async function initList() {                           //初始化APP列表
-            let t = await getProjects(0, 100);
+            let t = await getProjects(0, 500);
             lists = t[0];
             console.log("------applist-------", lists);
             let parent = document.getElementsByClassName("scroll")[0];
@@ -518,10 +517,10 @@
         function changePath(value) {
             if (value == 1) {
                 let p = document.getElementById("AppIcon").value;
-                document.getElementById("iconPath").innerHTML = p;
+                document.getElementById("iconPath").textContent = p;
             } else if (value == 2) {
                 let p = document.getElementById("file").value;
-                document.getElementById("filePath").innerHTML = p;
+                document.getElementById("filePath").textContent = p;
             }
         }
 
@@ -627,8 +626,8 @@
                 document.getElementById('AppName').value = "";
                 document.getElementById('Describe').value = "";
             }
-            document.getElementById('iconPath').innerHTML = "";
-            document.getElementById('filePath').innerHTML = "";
+            document.getElementById('iconPath').textContent = "";
+            document.getElementById('filePath').textContent = "(Zip size < 100M)";
             document.getElementById("AppIcon").value = "";
             document.getElementById("file").value = "";
             let pro = document.getElementsByClassName("process")[0];
@@ -637,9 +636,9 @@
         }
 
         function result(msg) {                                         //显示存储结果
-            document.getElementById('resault').innerHTML = msg;
+            document.getElementById('resault').textContent = msg;
             setTimeout(() => {
-                document.getElementById('resault').innerHTML = "";
+                document.getElementById('resault').textContent = "";
             }, 5000);
         }
 
