@@ -13,9 +13,9 @@
 <body>
     <div class="container" style="display: none">
         <div style="margin-left: 40px;margin-top: 43px;">
-            <span class="title">丨Up App</span>
-            <button type="button" onclick="exit()"
-                style="background: #142E48;color: #F2B840;position: absolute; right: 60px;top: 45px;">×</button>
+            <span class="title">丨Add App</span>
+            <div type="button" onclick="exit()" style="position: absolute; right: 60px;top: 45px;"><img
+                    style="transform: rotate(45deg);" src="./src/img/addexit.png" /></div>
         </div>
         <div style=" margin-left: 40px;margin-top: 45px;">
             <span class="title">App Name</span>
@@ -57,8 +57,8 @@
     <div class="container" style="display: block">
         <div style="margin-left: 40px;margin-top: 43px;">
             <span class="title">丨App List</span>
-            <button type="button" onclick="add()"
-                style="background: #142E48;color: #F2B840;position: absolute; right: 60px;top: 45px;">+</button>
+            <div type="button" onclick="add()" style="position: absolute; right: 60px;top: 45px;"><img
+                    src="./src/img/addexit.png" /></div>
         </div>
         <div class="scroll">
             <div class='item'>
@@ -458,7 +458,7 @@
         function exit() {                                              //退出upAPP页面
             appListView.style.display = "block";
             upappView.style.display = "none";
-            upTitle.textContent = "| Up App";
+            upTitle.textContent = "| Add App";
             upType = "up";
             appid = "";
             init();
@@ -469,7 +469,7 @@
         function add() {                                                //进入upAPP页面
             appListView.style.display = "none";
             upappView.style.display = "block";
-            upTitle.textContent = "| Up App";
+            upTitle.textContent = "| Add App";
             upType = "up";
             appid = "";
         }
