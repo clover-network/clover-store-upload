@@ -1,0 +1,215 @@
+body {
+    background: #142E48;
+    margin: 0px;
+}
+
+.container {
+    border-radius: 32px;
+    background: #F2B840;
+    box-shadow: 0px 4px 0px 0px #866726;
+    height: 806px;
+    width: 720px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.title {
+    color: #142E48;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.inputBlock {
+    height: 48px;
+    width: 640px;
+    border-radius: 12px;
+    background: #142E48;
+    border: 1px solid #E88A34;
+    color: white;
+    font-size: 18px;
+    padding-left: 5px;
+}
+
+.inputbtn {
+    border-radius: 5px;
+    background: #142E48;
+    box-shadow: 0px 4px 0px 0px #00000040;
+    border: none;
+    color: #F2B840;
+    font-family: PingFang HK;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: left;
+    padding: 8px;
+}
+
+.submitBtn {
+    width: 320px;
+    height: 56px;
+    margin-left: 200px;
+    margin-top: 149px;
+    border-radius: 12px;
+    color: #F2B840;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: center;
+    background: #142E48;
+    box-shadow: 0px 4px 0px 0px #000000;
+}
+
+.queryBtn {
+    width: 50px;
+    height: 35px;
+    margin-right: 0px;
+    margin-top: 0px;
+    border-radius: 12px;
+    color: #F2B840;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: center;
+    background: #142E48;
+    box-shadow: 0px 4px 0px 0px #000000;
+}
+
+.process {
+    display: none;
+    margin-left: 450px;
+    margin-top: -30px;
+    color: #142E48;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+.filePath {
+    color: #142E48;
+    font-family: PingFang HK;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.icons {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+}
+
+.appnames {
+    color: #000000;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.versions {
+    color: #000000;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.times {
+    color: #000000;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: left;
+    padding-left: 0.5rem
+}
+
+.updateBtn {
+    width: 107px;
+    height: 48px;
+    border-radius: 8px;
+    background: #142E48;
+    box-shadow: 0px 4px 4px 0px #000000;
+    color: #F2B840;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+.OffShelfBtn {
+    width: 239px;
+    height: 52px;
+    border-radius: 8px;
+    background: #142E48;
+    color: #F2B840;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+.closes {
+    margin-left: 375px;
+    margin-top: 20px;
+}
+
+.item {
+    display: flex;
+    position: relative;
+    padding-left: 2.5rem;
+    padding-top: 1rem;
+    padding-right: 2.5rem;
+    justify-content: space-around;
+}
+
+.item-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+.item-btn img {
+    margin-right: 0.5rem;
+}
+
+.scroll {
+    overflow: auto;
+    display: none;
+    height: 700px;
+    width: 710px;
+}
+
+.loading {
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    width: 128px;
+    height: 128px;
+}
