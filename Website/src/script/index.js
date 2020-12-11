@@ -228,7 +228,6 @@ function changePath(value) {
 }
 
 function captureFile() {                                          //保存到ipfs
-    SetLoadingType(true);
     let name = document.getElementById("AppName").value;
     let describe = document.getElementById("Describe").value;
     let icon = document.getElementById("AppIcon").files;
@@ -245,6 +244,7 @@ function captureFile() {                                          //保存到ipf
             AppIcon: icon,
             File: file
         });
+        SetLoadingType(true);
         return;
     }
     if (upType === "update") {
@@ -256,6 +256,7 @@ function captureFile() {                                          //保存到ipf
                     AppIcon: icon,
                     File: file
                 });
+                SetLoadingType(true);
             }
         }
     }
