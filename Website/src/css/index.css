@@ -159,8 +159,8 @@ body {
     width: 239px;
     height: 52px;
     border-radius: 8px;
-    background: #142E48;
-    color: #F2B840;
+    background: linear-gradient(94.54deg, #FF8212 0%, #ED4454 100%);
+    color: #FFFFFF;
     font-family: Roboto;
     font-weight: bold;
     font-size: 14px;
