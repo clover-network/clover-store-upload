@@ -7,13 +7,13 @@
     <title>Clover</title>
     <script src="https://cdn.jsdelivr.net/npm/ipfs-http-client@48.1.1/dist/index.min.js"></script>
     <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="shortcut icon" href="favicon.ico">
-    <script src="src/script/index.js"></script>
     <link rel="stylesheet" href="./src/css/index.css">
 </head>
 
 <body>
-    <div class="container" style="display: none">
+    <div class="container animate__animated animate__fadeIn" style="display: none">
         <div style="margin-left: 40px;margin-top: 43px;">
             <span class="title">丨Add App</span>
             <div type="button" onclick="exit()" style="position: absolute; right: 60px;top: 45px;"><img
@@ -46,7 +46,7 @@
             <input type='file' id="file" style="margin-left: 24px;visibility: hidden;position: absolute;"
                 onchange="changePath(2)" />
             <button class="inputbtn" style="margin-left: 33px;" onClick="select(2)">select file</button>
-            <span id="filePath" class="filePath">(Zip size &lt 100M)</span>
+            <span id="filePath" class="filePath">(The packet size &lt 100M)</span>
         </div>
         <div>
             <button type="button" onClick="captureFile()" class="submitBtn">Submit</button>
@@ -56,14 +56,14 @@
             <label id="resault" class="filePath" style="font-weight: bold;"></label>
         </div>
     </div>
-    <div class="container" style="display: block">
+    <div class="container animate__animated animate__fadeIn" style="display: block">
         <div style="margin-left: 40px;margin-top: 43px;">
             <span class="title">丨App List</span>
             <div type="button" onclick="add()" style="position: absolute; right: 60px;top: 45px;"><img
                     src="./src/img/addexit.png" /></div>
         </div>
         <div class="scroll">
-            <div class='item'>
+            <div class='item animate__animated animate__fadeIn'>
                 <div>
                     <img src="./src/img/head.png" class="icons">
                 </div>
@@ -86,7 +86,7 @@
                 </div>
             </div>
 
-            <div class="item">
+            <div class="item animate__animated animate__fadeIn">
                 <div>
                     <img src="./src/img/head.png" class="icons">
                 </div>
@@ -104,12 +104,21 @@
             </div>
         </div>
     </div>
-    <div class="loading" style="display: none;">
-        <img src="./src/img/loading.gif" />
+    <div>
+        <div class="maskHalf" style="display:none;"></div>
+        <div class="message animate__animated animate__fadeIn" style="display:none;">
+            <div id="header" class="item-btn" style="flex-direction: column;">
+                <span style="font-weight: bolder;">Warning</span>
+                <span>The packet size is out of limit!</span>
+            </div>
+        </div>
+        <div class="loading animate__animated animate__fadeIn" style="display: none;">
+            <img src="./src/img/loading.gif" />
+        </div>
     </div>
-
+    <script src="src/script/index.js"></script>
     <script>
-        login();    //登录
+        login();
     </script>
 </body>
 

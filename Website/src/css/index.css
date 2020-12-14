@@ -36,6 +36,7 @@ body {
     color: #142E48;
     font-size: 18px;
     padding-left: 5px;
+    outline: none;
 }
 
 .inputbtn {
@@ -188,7 +189,6 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-
 }
 
 .item-btn img {
@@ -208,4 +208,42 @@ body {
     left: 45%;
     width: 128px;
     height: 128px;
+}
+
+.maskHalf{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+}
+
+.message{
+    position: absolute;
+	background: #fff;
+	width: 25%;
+	height: 20%;
+    top: 30%;
+    left: 38%;
+    border-radius: 5px;
+    box-shadow: -1px -1px 2px 2px #FCF0E6;
+}
+
+#header{
+    height: 40px;
+    margin-top: 50px;
+}
+
+#header-right{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    background: red;
+    color: #fff;
+    right: 5px;
+    top: 5px;
+    text-align: center;
 }

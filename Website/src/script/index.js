@@ -21,6 +21,10 @@ var appDescribePath = 'Describe.txt';
 var appIconPath = 'icon.png';
 var appZipPath = 'app.zip';
 
+function sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 async function login() {
     if (!window.ethereum) {
         window.alert('Please install MetaMask first.');
@@ -98,7 +102,6 @@ async function initList() {
         item1 = document.getElementsByClassName("item")[0];
         item2 = document.getElementsByClassName("item")[1];
     }
-
     upTitle = document.getElementsByClassName("title")[0];
     upappView = document.getElementsByClassName("container")[0];
     appListView = document.getElementsByClassName("container")[1];
@@ -111,7 +114,6 @@ async function initList() {
         if (account !== lists[i].owner.toLowerCase()) {
             continue;
         }
-
         if (lists[i].status == 0) {
             ele = item1.cloneNode(true);
         } else {
@@ -119,6 +121,7 @@ async function initList() {
         }
         setItemData(ele, lists[i])
         parent.appendChild(ele);
+        await sleep(800);
     }
 }
 
@@ -145,20 +148,6 @@ async function setItemData(item, data) {
             RemoveApp(data.id);
         })
     }
-}
-
-function updateBtn([id, name, deccibeText, iconHash, zipHash]) {
-    appListView.style.display = "none";
-    upappView.style.display = "block";
-    upTitle.textContent = "| Update App";
-    document.getElementById('AppName').value = name;
-    document.getElementById('Describe').value = deccibeText;
-    upType = "update";
-    appid = id;
-    upappname = name;
-    updeccibeText = deccibeText;
-    upiconHash = iconHash;
-    upzipHash = zipHash;
 }
 
 async function ShelfApp(id) {
@@ -212,13 +201,19 @@ function select(value) {
         document.getElementById("file").click();
     }
 }
+
 function changePath(value) {
     if (value == 1) {
         let p = document.getElementById("AppIcon").value;
         document.getElementById("iconPath").textContent = p;
     } else if (value == 2) {
-        let p = document.getElementById("file").value;
-        document.getElementById("filePath").textContent = p;
+        let file = document.getElementById("file");
+        if (file.files[0].size > 104857600) {
+            showMsg("", 3.5);
+            file.value = "";
+            return;
+        }
+        document.getElementById("filePath").textContent = file.value;
     }
 }
 
@@ -278,16 +273,13 @@ async function saveToIpfs(obj) {
                 path: appZipPath,
                 content: obj.File[0]
             }, {
-
                 progress: (prog) => {
                     let p = Math.floor(100 * Number(prog) / Number(obj.Describe.size));
                     if (p > 100) p = 100;
                     pro.textContent = p.toString() + "%";
                 }
-
             });
         }
-
         let info = {};
         info._name = obj.AppName;
         info._desc = added2.cid.string;
@@ -316,7 +308,7 @@ function init() {
         document.getElementById('Describe').value = "";
     }
     document.getElementById('iconPath').textContent = "";
-    document.getElementById('filePath').textContent = "(Zip size < 100M)";
+    document.getElementById('filePath').textContent = "(The packet size < 100M)";
     document.getElementById("AppIcon").value = "";
     document.getElementById("file").value = "";
     let pro = document.getElementsByClassName("process")[0];
@@ -331,26 +323,56 @@ function result(msg) {
     }, 5000);
 }
 
+function add() {
+    upTitle.textContent = "| Add App";
+    upType = "up";
+    appid = "";
+    appListView.style.display = "none";
+    upappView.style.display = "block";
+}
+
+function updateBtn([id, name, deccibeText, iconHash, zipHash]) {
+    appListView.style.display = "none";
+    upappView.style.display = "block";
+    upTitle.textContent = "| Update App";
+    document.getElementById('AppName').value = name;
+    document.getElementById('Describe').value = deccibeText;
+    upType = "update";
+    appid = id;
+    upappname = name;
+    updeccibeText = deccibeText;
+    upiconHash = iconHash;
+    upzipHash = zipHash;
+}
+
 function exit() {
-    appListView.style.display = "block";
-    upappView.style.display = "none";
     upTitle.textContent = "| Add App";
     upType = "up";
     appid = "";
     init();
     document.getElementById('AppName').value = "";
     document.getElementById('Describe').value = "";
-}
-
-function add() {
-    appListView.style.display = "none";
-    upappView.style.display = "block";
-    upTitle.textContent = "| Add App";
-    upType = "up";
-    appid = "";
+    appListView.style.display = "block";
+    upappView.style.display = "none";
 }
 
 function SetLoadingType(isShow) {
     let load = document.getElementsByClassName('loading')[0];
+    let maskHalf = document.getElementsByClassName('maskHalf')[0];
     load.style.display = isShow ? "block" : "none";
+    maskHalf.style.display = isShow ? "block" : "none";
+}
+
+function showMsg(msg, timer) {
+    let message = document.getElementsByClassName('message')[0];
+    let maskHalf = document.getElementsByClassName('maskHalf')[0];
+    message.style.display = "block";
+    maskHalf.style.display = "block";
+    if (msg !== "") {
+        message.children[0].children[0].textContent = msg;
+    }
+    setTimeout(() => {
+        message.style.display = "none";
+        maskHalf.style.display = "none";
+    }, timer * 1000);
 }
