@@ -61,7 +61,7 @@ contract CloverOsProject {
     address[] public developers;
     Project[] public projects;
     mapping(address => bool) public isDevelover;
-    uint256 public leastUpdatTime = block.timestamp;
+    uint256 public latestUpdateTime = block.timestamp;
 
     function addProject(
         string calldata _name,
@@ -88,7 +88,7 @@ contract CloverOsProject {
                 block.timestamp
             )
         );
-        leastUpdatTime = block.timestamp;
+        latestUpdateTime = block.timestamp;
         emit NewProject(msg.sender, projects[id]);
     }
 
@@ -96,7 +96,7 @@ contract CloverOsProject {
          require(projects[_id].status != _status,"Clover OS: status not been changed");
          projects[_id].status = _status;
          projects[_id].updateTime =  block.timestamp;
-         leastUpdatTime = block.timestamp;
+         latestUpdateTime = block.timestamp;
          emit ProjectStatusChanged(msg.sender,  projects[_id]);
     }
 
@@ -105,7 +105,7 @@ contract CloverOsProject {
          require(projects[_id].status != _status,"Clover OS: status not been changed");
          projects[_id].status = _status;
          projects[_id].updateTime =  block.timestamp;
-         leastUpdatTime = block.timestamp;
+         latestUpdateTime = block.timestamp;
          emit ProjectStatusChanged(msg.sender, projects[_id]);
     }
 
@@ -123,7 +123,7 @@ contract CloverOsProject {
         projects[_id].icon = _icon;
         projects[_id].version = projects[_id].version + 1;
         projects[_id].updateTime =  block.timestamp;
-        leastUpdatTime = block.timestamp;
+        latestUpdateTime = block.timestamp;
         emit UpdateProject(msg.sender, projects[_id]);
     }
 
