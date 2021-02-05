@@ -155,7 +155,11 @@ async function setItemData(item, data) {
 async function ShelfApp(id) {
     SetLoadingType(true);
     try {
-        let res = await erc20.functions.updateProjectStatusByOwner(id, 1);
+        if (account === Admin) {
+            let res = await erc20.functions.updateProjectStatusByAdmin(id, 1);
+        } else {
+            let res = await erc20.functions.updateProjectStatusByOwner(id, 1);
+        }
     } catch (e) {
         console.log(e);
     } finally {
